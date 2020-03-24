@@ -1,0 +1,7 @@
+{# templates/panier_validation.html.twig #}
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h2>Votre commande a bien été passée</h2>
+    <p>Commandé le {{ commande.dateCommande|date('Y-m-d') }}</p>
+    <p>Numéro de commande : {{ commande.id }}</p>
+{% endblock %}

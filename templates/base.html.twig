@@ -1,12 +1,30 @@
+{# templates/base.html.twig #}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        {% block style %}{% endblock %}
+        <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+        <link href="{{ asset('css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+        {% include 'header.html.twig' %}
+        {% block content %} {% endblock %}
+        {% include 'footer.html.twig' %}
+        {% include 'script.html.twig' %}
+        {% block script %}{% endblock %}
     </body>
 </html>

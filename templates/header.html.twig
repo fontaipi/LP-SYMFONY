@@ -1,0 +1,47 @@
+{# templates/header.html.twig #}
+<div class="header-top">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 text-center">
+                <a href="{{ path('home_page') }}" class="site-logo">
+                    <img src="{{ asset('images/logo.png') }}" alt="Image" class="img-fluid">
+                </a>
+            </div>
+            <a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                        class="icon-menu h3"></span></a>
+        </div>
+    </div>
+
+
+
+
+    <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+        <div class="container">
+            <div class="d-flex align-items-center">
+
+                <div class="mx-auto">
+                    <nav class="site-navigation position-relative text-left" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+                            <li><a href="{{ path('home_page') }}" class="nav-link text-left">{{ 'home' | trans }}</a></li>
+                            <li><a href="{{ path('wines_page', { '_locale' : 'fr'}) }}" class="nav-link text-left">{{ 'wines' | trans }}</a></li>
+                            {% if app.user %}
+                                <li><a href="{{ path('usager_accueil', { '_locale' : 'fr'}) }}" class="nav-link text-left">Mon compte</a></li>
+                            {% else %}
+                                <li><a href="{{ path('usager_inscription', { '_locale' : 'fr'}) }}" class="nav-link text-left">Inscription</a></li>
+                                <li><a href="{{ path('app_login') }}" class="nav-link text-left">Connexion</a></li>
+                            {% endif %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('backoffice_admin') }}" class="nav-link text-left">Backoffice</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

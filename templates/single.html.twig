@@ -1,0 +1,62 @@
+{# templates/single.html.twig #}
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="site-section bg-primary py-5 page-title-wrap mt-5">
+        <div class="container">
+            <h1>{{ single.libelle }}</h1>
+        </div>
+    </div>
+
+
+
+
+    <div class="site-section mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="owl-carousel hero-slide owl-style">
+                        <img src="{{ asset('images/wine_'~categorie~'.png') }}" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-5 ml-auto">
+                    <h2 class="text-primary">Wine Details</h2>
+                    <p>{{ single.texte }}</p>
+
+                    <div class="mb-5">
+                        <div class="input-group mb-3" style="max-width: 200px;">
+                            <div class="input-group-prepend">
+                                <button id="btnQuantiteMinus" class="btn btn-outline-primary js-btn-minus btnQuantite" type="button">&minus;</button>
+                            </div>
+                            <input id="quantiteProduit" type="text" class="form-control text-center border mr-0" value="1" min="1" placeholder=""
+                                   aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <div class="input-group-append">
+                                <button id="btnQuantitePlus" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <p><a id="addToCart" href="" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">{{ 'addCart' | trans }}</a></p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var quantite = parseInt(document.getElementById("quantiteProduit").value) -1;
+        var route = "{{ path('panier_ajouter', { '_locale' : 'fr', 'idProduit' : single.id}) }}/" + (quantite == 0 ? '1' : quantite);
+        document.getElementById('addToCart').setAttribute("href", route);
+
+        document.getElementById("btnQuantitePlus").addEventListener("click", function(){
+            var quantite = parseInt(document.getElementById("quantiteProduit").value) +1;
+            var route = "{{ path('panier_ajouter', { '_locale' : 'fr', 'idProduit' : single.id}) }}/" + quantite;
+            document.getElementById('addToCart').setAttribute("href", route);
+        });
+
+        document.getElementById("btnQuantiteMinus").addEventListener("click", function(){
+            var quantite = parseInt(document.getElementById("quantiteProduit").value) -1;
+            var route = "{{ path('panier_ajouter', { '_locale' : 'fr', 'idProduit' : single.id}) }}/" + (quantite == 0 ? '1' : quantite);
+            document.getElementById('addToCart').setAttribute("href", route);
+        });
+    </script>
+{% endblock %}

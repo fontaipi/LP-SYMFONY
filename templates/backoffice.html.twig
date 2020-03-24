@@ -1,0 +1,18 @@
+{# templates/backoffice.html.twig #}
+{% extends 'base.html.twig' %}
+{% block content %}
+<div class="site-section mt-5">
+
+<div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-6 col-md-6">
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('article_index') }}">CRUD Article</a>
+            </div>
+            <div class="col-lg-6 mb-6 col-md-6">
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('categorie_index') }}">CRUD Categorie</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

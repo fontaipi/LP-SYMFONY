@@ -1,0 +1,39 @@
+{# templates/product.html.twig #}
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="site-section mt-5">
+    <div class="container">
+        <div class="row">
+            {% for item in wines %}
+                <div class="col-lg-4 mb-5 col-md-6">
+
+                    <div class="wine_v_1 text-center pb-4">
+                        <a href="{{ path('single_page', { '_locale' : 'fr', 'categorie' : categorie, 'product' : item.id}) }}" class="thumbnail d-block mb-4"><img src="{{ asset('images/wine_'~categorie~'.png') }}" alt="Image" class="img-fluid"></a>
+                        <div>
+                            <h3 class="heading mb-1"><a href="#">{{ item.libelle }}</a></h3>
+                            <span class="price">{{ item.prix }}€</span>
+                        </div>
+
+
+                        <div class="wine-actions">
+
+                            <h3 class="heading-2"><a href="#">{{ item.libelle }}</a></h3>
+                            <span class="price d-block">{{ item.prix }}€</span>
+
+                            <div class="rating">
+                                <span class="icon-star"></span>
+                                <span class="icon-star"></span>
+                                <span class="icon-star"></span>
+                                <span class="icon-star"></span>
+                                <span class="icon-star-o"></span>
+                            </div>
+
+                            <a href="{{ path('panier_ajouter', { '_locale' : 'fr', 'idProduit' : item.id, 'quantite' : 1}) }}" class="btn add"><span class="icon-shopping-bag mr-3"></span>{{ 'addCart' | trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+{% endblock %}
